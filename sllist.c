@@ -11,6 +11,7 @@ struct Node{
 struct Link_List
 {
 	struct Node *head;
+	struct Node *tail;
 };
 
 short Link_List_Is_Empty(struct Node* head)
@@ -18,30 +19,22 @@ short Link_List_Is_Empty(struct Node* head)
 	return (head == NULL);
 }
 
-void Link_List_Push(int data, struct Node* head)
+void Link_List_Push(int data, struct Node* head_ref)
 {
-	struct Node* new_node = malloc(sizeof(struct Node));
-	new_node->data = data;
-	new_node->next = NULL;
-	
+	struct Node *temp = (struct Node*) malloc(sizeof(struct Node));
+	temp->data = data;
+	temp->next = NULL;
 
-	if(Link_List_Is_Empty(head))
+	if(head_ref==NULL)
 	{
-		
-		head = new_node;
+		head_ref->head = temp;
+		head_ref->tail = temp;
 	}
-
-
 
 	else
 	{
-		struct Node* temp = head;
-		while(temp->next != NULL)
-		{
-			temp = temp->next;
-		}
-
-		temp->next = new_node;
+		head_ref->tail->next = temp;
+		head_ref->tail = temp;
 	}
 }
 

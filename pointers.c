@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 
 int main()
@@ -23,6 +24,7 @@ int main()
 	printf("\n");
 	printf("%lu\n", sizeof(pointer));
 	printf("%lu\n", sizeof(number));
+
 
 
 
