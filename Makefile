@@ -3,3 +3,6 @@ basic: basic.c
 
 input: input.c
 	gcc input.c -o input
+
+sllist: sllist.c
+	gcc sllist.c -o sllist

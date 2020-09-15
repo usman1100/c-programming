@@ -1,71 +1,52 @@
 #include <stdio.h>
 #include <stdlib.h>
-// #include <stdbool.h>
+
 
 struct Node{
 	int data;
-	struct Node *next;
+	struct Node* next;
 };
 
+typedef struct Node node;
 
-struct Link_List
-{
-	struct Node *head;
-	struct Node *tail;
-};
 
-short Link_List_Is_Empty(struct Node* head)
-{
-	return (head == NULL);
-}
+void printList(node *head){
+	node *temp = head;
 
-void Link_List_Push(int data, struct Node* head_ref)
-{
-	struct Node *temp = (struct Node*) malloc(sizeof(struct Node));
-	temp->data = data;
-	temp->next = NULL;
+	while(temp != NULL){
+		printf("%d", temp->data);
 
-	if(head_ref==NULL)
-	{
-		head_ref->head = temp;
-		head_ref->tail = temp;
+		if(temp->next != NULL) printf(" -> ");
+
+		temp = temp->next;
 	}
 
-	else
-	{
-		head_ref->tail->next = temp;
-		head_ref->tail = temp;
-	}
+	printf("\n");
 }
 
 
-void Link_List_Print(struct Node *head)
+node* create_new_node(int data)
 {
-	if(Link_List_Is_Empty(head))
-	{
-		printf("List Empty\n");
-	}
+	node *new = malloc(sizeof(node));
 
-	else
-	{
-		struct Node* temp = head;
-		while(temp->next != NULL)
-		{
-			printf("%d -> ", temp->data);
-			temp = temp->next;
-		}
-		printf("\n");
-	}
+	new->data = data;
+	new->next = NULL;
+
+	return new;
 }
+
 
 int main()
 {
-	struct Link_List l1;
-	Link_List_Push(12, l1.head);
-	Link_List_Push(224, l1.head);
-	Link_List_Push(52, l1.head);
-	Link_List_Push(54, l1.head);
-	Link_List_Push(11, l1.head);
-	Link_List_Push(587, l1.head);
-	Link_List_Print(l1.head);
+	node *head = NULL;
+	node *temp;
+
+	for (int i = 0; i < 10; ++i)
+	{
+		temp = create_new_node(i+1);
+		temp->next = head;
+		head = temp;
+	}
+
+	printList(head);
 }
