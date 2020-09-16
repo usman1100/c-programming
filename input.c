@@ -13,7 +13,7 @@ int main()
 	{
 		str[i] = i;
 	}
-	
+
 	printf("\nSTR: %s\n", str);
-	
+
 }
