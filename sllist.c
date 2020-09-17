@@ -2,51 +2,64 @@
 #include <stdlib.h>
 
 
-struct Node{
+struct Node
+{
 	int data;
-	struct Node* next;
+	struct Node *next;
 };
 
 typedef struct Node node;
 
 
-void printList(node *head){
-	node *temp = head;
+node *list = NULL;
+node *list_end;
 
-	while(temp != NULL){
-		printf("%d", temp->data);
+void insert(int n){
 
-		if(temp->next != NULL) printf(" -> ");
+	node *t = (node*)malloc(sizeof(node));
+	t->data = n;
+	t->next = NULL;
 
-		temp = temp->next;
+	if(list == NULL){
+		list = t;
+		list_end = t;
 	}
 
-	printf("\n");
+	else{
+		list_end->next = t;
+		list_end = list_end->next;
+	}
 }
 
 
-node* create_new_node(int data)
+void printlist()
 {
-	node *new = malloc(sizeof(node));
+	if(list == NULL){
+		printf("List is empty\n");
+		return;
+	}
 
-	new->data = data;
-	new->next = NULL;
-
-	return new;
+	else{
+		node *temp = list;
+		while( temp != NULL)
+		{
+			printf("%d ", temp->data);
+			temp = temp->next;
+		}
+		printf("\n");
+	}
 }
-
 
 int main()
 {
-	node *head = NULL;
-	node *temp;
 
-	for (int i = 0; i < 10; ++i)
-	{
-		temp = create_new_node(i+1);
-		temp->next = head;
-		head = temp;
-	}
+	insert(5);
+	insert(4);
+	insert(3);
+	insert(2);
+	insert(1);
 
-	printList(head);
+	printlist();
+
+
 }
