@@ -50,16 +50,65 @@ void printlist()
 	}
 }
 
+void printrecur(node *list){
+	if(list == NULL) return;
+	else{
+		printf("%d", list->data);
+		if(list->next != NULL) printf(" -> ");
+		else printf("\n");
+		printrecur(list->next);
+	}
+}
+
+// void insertCustom(int n, node **list_ref, node **list_end_ref)
+// {
+// 	node *t = (node*)malloc(sizeof(node));
+// 	t->data = n;
+// 	t->next = NULL;
+
+// 	node* list = *list_ref;
+// 	node* list_end = *list_end_ref;
+
+// 	if(list == NULL){
+// 		list = t;
+// 		list_end = t;
+// 	}
+
+// 	else{
+// 		list_end->next = t;
+// 		list_end = list_end->next;
+// 	}
+// }
+
+
+// void printlistCustom(node **list_ref){
+// 	node *list = *list_ref;
+
+// 	node *temp = list;
+
+// 	while(temp != NULL)
+// 	{
+// 		printf("%d ", temp->data);
+// 		temp = temp->next;
+// 	}
+
+// 	printf("\n");
+// }
+
 int main()
 {
 
-	insert(5);
-	insert(4);
-	insert(3);
-	insert(2);
-	insert(1);
+	node* list2 = NULL;
+	node* list2_end;
 
+	for (int i = 0; i < 100; ++i)
+	{
+		insert(i+1);
+	}
 	printlist();
+	printrecur(list);
+
+	
 
 
 }
