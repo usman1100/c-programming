@@ -60,41 +60,6 @@ void printrecur(node *list){
 	}
 }
 
-// void insertCustom(int n, node **list_ref, node **list_end_ref)
-// {
-// 	node *t = (node*)malloc(sizeof(node));
-// 	t->data = n;
-// 	t->next = NULL;
-
-// 	node* list = *list_ref;
-// 	node* list_end = *list_end_ref;
-
-// 	if(list == NULL){
-// 		list = t;
-// 		list_end = t;
-// 	}
-
-// 	else{
-// 		list_end->next = t;
-// 		list_end = list_end->next;
-// 	}
-// }
-
-
-// void printlistCustom(node **list_ref){
-// 	node *list = *list_ref;
-
-// 	node *temp = list;
-
-// 	while(temp != NULL)
-// 	{
-// 		printf("%d ", temp->data);
-// 		temp = temp->next;
-// 	}
-
-// 	printf("\n");
-// }
-
 int main()
 {
 
@@ -108,7 +73,6 @@ int main()
 	printlist();
 	printrecur(list);
 
-	
 
 
 }
