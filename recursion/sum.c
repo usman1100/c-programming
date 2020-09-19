@@ -1,17 +1,30 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int sum_of_series(int n, int start){
+unsigned long long sum_of_series(int n, unsigned long long start){
 	if(n <= 0) return start;
 
 	sum_of_series(n-1, start+n);
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-	int x;
 
-	x = sum_of_series(3, 0);
 
-	printf("%d\n", x);
+
+	if(argc != 2)
+	{
+		printf("Usage: ./sum <n>\n");
+		return 1;
+	}
+
+
+	unsigned long long x;
+
+	x = sum_of_series(atoi(argv[1]), 0);
+
+	printf("%llu\n", x);
+
+
 
 }
